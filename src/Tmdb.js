@@ -1,5 +1,5 @@
 const API_KEY = 'c9fdf4fa5f87d2a7accb459e72b64bb1';
-const BASE_URL = 'https://api.themoviedb.org/3';
+const API_BASE = 'https://api.themoviedb.org/3';
 
 /**
  * Originais da Netflix
@@ -11,6 +11,13 @@ const BASE_URL = 'https://api.themoviedb.org/3';
  * Terror (Horror)
  * Documentário (Documentary)
  */
+
+const basicFetch = async (url) => {endpoijnt => {
+  const req = await fetch(`${API_BASE}${endpoint}`);
+  const json = await req.json();
+  return json;
+};
+
 export default {
   getHomeList: async () => {
     return [
