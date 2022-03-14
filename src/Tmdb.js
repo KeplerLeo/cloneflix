@@ -63,6 +63,7 @@ export default {
       },
     ];
   },
+
   getMovieInfo: async (movieId, type) => {
     let info = {};
     if (movieId) {

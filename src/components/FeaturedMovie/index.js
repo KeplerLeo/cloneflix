@@ -1,7 +1,7 @@
 import React from "react";
 import "./FeatureMovie.css";
 
-export default ({ item }) => {
+export default function Main({ item }) {
   let genres = [];
   for(let i in item.genres) {
     genres.push(item.genres[i].name);

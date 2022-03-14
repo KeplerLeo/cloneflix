@@ -5,7 +5,7 @@ import "./App.css";
 import FeaturedMovie from "./components/FeaturedMovie";
 import Header from "./components/Header";
 
-export default () => {
+export default function Main() {
 
   const [homeList, setHomeList] = useState([]);
   const [featuredData, setFeaturedData] = useState(null);
@@ -35,13 +35,18 @@ export default () => {
       } else {
         setBlackHeader(false);
       }
+    } 
+    console.log(setBlackHeader);
+    window.addEventListener("scroll", scrollListener);
+    return () => {
+      window.removeEventListener("scroll", scrollListener);
     }
   }, []);
     
 
   return (
     <div className="page">
-      <Header black={blackHeader}/>
+      <Header black={blackHeader} />
 
       {featuredData && <FeaturedMovie item={featuredData} />}
 
