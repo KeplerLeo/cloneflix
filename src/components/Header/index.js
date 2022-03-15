@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 
-export default function Main(black) {
+export default function Main({ black }) {
   return (
     <header className={black ? 'black' : ''}>
       <div className="header--logo">

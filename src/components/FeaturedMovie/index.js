@@ -2,10 +2,17 @@ import React from "react";
 import "./FeatureMovie.css";
 
 export default function Main({ item }) {
+  
   let genres = [];
-  for(let i in item.genres) {
+  for (let i in item.genres) {
     genres.push(item.genres[i].name);
-  };
+  }
+
+  let description = item.overview;
+  if (description.length > 200) {
+    description = description.substring(0, 200) + "...";
+  }
+
   return (
     <section className="featured" style={{
       backgroudSize: 'cover',
@@ -20,7 +27,7 @@ export default function Main({ item }) {
             <div className="featured--year">{(new Date(item.first_air_date)).getFullYear()}</div>
             <div className="featured--seasons">{item.number_of_seasons} temporada{item.number_of_seasons > 1 ? 's' : ''}</div>
           </div>
-          <div className="featured--description">{item.overview}</div>
+          <div className="featured--description">{description}</div>
           <div className="featured--buttons">
             <a href={`/watch/${item.id}`} className="featured--watchbutton">► Assistir</a>
             <a href={`/list/add/${item.id}`} className="featured--mylistbutton">+ Minha lista</a>
