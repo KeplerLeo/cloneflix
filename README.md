@@ -1,13 +1,33 @@
-# Getting Started 
-This project was made for educational purposes.
+# CloneFlix
 
-## Run project
+## About
 
-You can run the project using
-### `npm start`
+CloneFlix is a Netflix clone built with ReactJS. It is a project developed for me to learn more about ReactJS and its ecosystem.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Developed Skills
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* ReactJS
+* React Hooks
+* NextJS
+* Styled Components
+* TailwindCSS
+
+## How to run
+
+1. Clone this repository
+
+    ```bash
+        git clone git@github.com:KeplerLeo/cloneflix.git
+    ```
+
+2. Install dependencies
+
+    ```bash
+        npm install
+    ```
+
+3. Run the project
+
+    ```bash
+        npm start
+    ```
