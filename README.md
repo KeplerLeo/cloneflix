@@ -1,16 +1,16 @@
 # CloneFlix
 
+![Screenshot](/public/cloneflix-screenshot.png)
+
 ## About
 
-CloneFlix is a Netflix clone built with ReactJS. It is a project developed for me to learn more about ReactJS and its ecosystem.
+CloneFlix is a Netflix clone built with ReactJS. This project was developed to learn more about ReactJS and its ecosystem.
 
-## Developed Skills
+## Technologies Used
 
-* ReactJS
-* React Hooks
-* NextJS
-* Styled Components
-* TailwindCSS
+- **ReactJS**: A JavaScript library for building user interfaces.
+- **React Hooks**: Allows you to use state and other React features without writing a class.
+- **TailwindCSS**: A utility-first CSS framework for rapidly building custom user interfaces.
 
 ## How to run
 
@@ -31,3 +31,11 @@ CloneFlix is a Netflix clone built with ReactJS. It is a project developed for m
     ```bash
         npm start
     ```
+
+## Live Demo
+
+The project is deployed and can be accessed at [https://keplerleo.github.io/cloneflix/](https://keplerleo.github.io/cloneflix/)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
