@@ -63,18 +63,20 @@ export default function Main() {
         ))}
       </section>
 
-      <footer>
-        Feito por Leonardo Kepler Mesquita
-        <br />
-        Dados de API do
-        {' '}
-        <a href="https://github.com/keplerleo" aria-label="GitHub">
-          <GitHubIcon />
-        </a>
-        <a href="mailto:leokepler@gmail.com" aria-label="Email">
-          <EmailIcon />
-        </a>
-        <br />
+      <footer className="footer">
+        <p className="footer-text">
+          Feito por Leonardo Kepler Mesquita
+          <br />
+          Dados de API do site Themoviedb.org
+        </p>
+        <div className="footer-icons">
+          <a href="https://github.com/keplerleo" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+            <GitHubIcon alt="GitHub" />
+          </a>
+          <a href="mailto:leokepler@gmail.com" aria-label="Email" target="_blank" rel="noopener noreferrer">
+            <EmailIcon alt="Email" />
+          </a>
+        </div>
       </footer>
 
       {homeList.length <= 0 && (
