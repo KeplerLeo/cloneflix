@@ -1,16 +1,8 @@
-const API_KEY = 'c9fdf4fa5f87d2a7accb459e72b64bb1';
+const API_KEY = process.env.REACT_APP_API_KEY;
 const API_BASE = 'https://api.themoviedb.org/3';
 
-/**
- * Originais da Netflix
- * Recomendados (Trending)
- * Em alta (Top Rated)
- * Ação (Action)
- * Aventura (Adventure)
- * Comédia (Comedy)
- * Terror (Horror)
- * Documentário (Documentary)
- */
+const MOVIE_ENDPOINT = (id) => `/movie/${id}?language=pt-BR&api_key=${API_KEY}`;
+const TV_ENDPOINT = (id) => `/tv/${id}?language=pt-BR&api_key=${API_KEY}`;
 
 const basicFetch = async (endpoint) => {
   const req = await fetch(`${API_BASE}${endpoint}`);
@@ -18,67 +10,63 @@ const basicFetch = async (endpoint) => {
   return json;
 };
 
+const fetchCategory = async (slug, title, endpoint) => ({
+  slug,
+  title,
+  items: await basicFetch(endpoint),
+});
+
+const typeEndpoints = {
+  movie: MOVIE_ENDPOINT,
+  tv: TV_ENDPOINT,
+};
+
 export default {
-  getHomeList: async () => {
-    return [
-      {
-        slug: 'originals',
-        title: 'Originais do Netflix',
-        items: await basicFetch(`/discover/tv?with_network=213&language=pt-BR&api_key=${API_KEY}`),
-      },
-      {
-        slug: 'trending',
-        title: 'Recomendados para você',
-        items: await basicFetch(`/trending/all/week?language=pt-BR&api_key=${API_KEY}`),
-      },
-      {
-        slug: 'toprated',
-        title: 'Em alta',
-        items: await basicFetch(`/movie/top_rated?language=pt-BR&api_key=${API_KEY}`),
-      },
-      {
-        slug: 'action',
-        title: 'Ação',
-        items: await basicFetch(`/discover/movie?with_genres=28&language=pt-BR&api_key=${API_KEY}`),
-      },
-      {
-        slug: 'adventure',
-        title: 'Aventura',
-        items: await basicFetch(`/discover/movie?with_genres=12&language=pt-BR&api_key=${API_KEY}`),
-      },
-      {
-        slug: 'comedy',
-        title: 'Comédia',
-        items: await basicFetch(`/discover/movie?with_genres=35&language=pt-BR&api_key=${API_KEY}`),
-      },
-      {
-        slug: 'horror',
-        title: 'Terror',
-        items: await basicFetch(`/discover/movie?with_genres=27&language=pt-BR&api_key=${API_KEY}`),
-      },
-      {
-        slug: 'documentary',
-        title: 'Documentário',
-        items: await basicFetch(`/discover/movie?with_genres=99&language=pt-BR&api_key=${API_KEY}`),
-      },
-    ];
-  },
+  getHomeList: async () => [
+    await fetchCategory(
+      'originals',
+      'Originais do Netflix',
+      `/discover/tv?with_network=213&language=pt-BR&api_key=${API_KEY}`,
+    ),
+    await fetchCategory(
+      'trending',
+      'Recomendados para você',
+      `/trending/all/week?language=pt-BR&api_key=${API_KEY}`,
+    ),
+    await fetchCategory(
+      'toprated',
+      'Em alta',
+      `/movie/top_rated?language=pt-BR&api_key=${API_KEY}`,
+    ),
+    await fetchCategory(
+      'action',
+      'Ação',
+      `/discover/movie?with_genres=28&language=pt-BR&api_key=${API_KEY}`,
+    ),
+    await fetchCategory(
+      'adventure',
+      'Aventura',
+      `/discover/movie?with_genres=12&language=pt-BR&api_key=${API_KEY}`,
+    ),
+    await fetchCategory(
+      'comedy',
+      'Comédia',
+      `/discover/movie?with_genres=35&language=pt-BR&api_key=${API_KEY}`,
+    ),
+    await fetchCategory(
+      'horror',
+      'Terror',
+      `/discover/movie?with_genres=27&language=pt-BR&api_key=${API_KEY}`,
+    ),
+    await fetchCategory(
+      'documentary',
+      'Documentário',
+      `/discover/movie?with_genres=99&language=pt-BR&api_key=${API_KEY}`,
+    ),
+  ],
 
   getMovieInfo: async (movieId, type) => {
-    let info = {};
-    if (movieId) {
-      switch (type) {
-        case 'movie':
-          info = await basicFetch(`/movie/${movieId}?language=pt-BR&api_key=${API_KEY}`);
-          break;
-        case 'tv':
-          info = await basicFetch(`/tv/${movieId}?language=pt-BR&api_key=${API_KEY}`);
-          break;
-        default:
-          info = null;
-          break;
-      }
-    }
-    return info;
-  }
+    const endpoint = typeEndpoints[type];
+    return movieId && endpoint ? basicFetch(endpoint(movieId)) : null;
+  },
 };

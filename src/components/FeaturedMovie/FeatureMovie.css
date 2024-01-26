@@ -31,7 +31,9 @@
   margin-top: 15px;
 }
 
-.featured--points, .featured--year, .featured--seasons {
+.featured--points,
+.featured--year,
+.featured--seasons {
   display: inline-block;
   margin-right: 15px;
 }
@@ -47,7 +49,8 @@
   max-width: 30%;
 }
 
-.featured--watchbutton, .featured--mylistbutton {
+.featured--watchbutton,
+.featured--mylistbutton {
   display: inline-block;
   font-size: 20px;
   font-weight: bold;
@@ -59,7 +62,8 @@
   margin-top: 15px;
 }
 
-.featured--watchbutton:hover, .featured--mylistbutton:hover {
+.featured--watchbutton:hover,
+.featured--mylistbutton:hover {
   opacity: 0.7;
   transition: all ease 0.3s;
 }
@@ -80,7 +84,7 @@
   color: #999;
 }
 
-@media (max-width : 768px) {
+@media (max-width: 768px) {
   .featured {
     height: 70vh;
   }
@@ -99,7 +103,8 @@
     margin-right: 30px;
   }
 
-  .featured--watchbutton, .featured--mylistbutton {
+  .featured--watchbutton,
+  .featured--mylistbutton {
     font-size: 16px;
     padding: 8px 15px;
   }
