@@ -30,7 +30,8 @@
   transform: scale(1);
 }
 
-.movieRow--left, .movieRow--right {
+.movieRow--left,
+.movieRow--right {
   position: absolute;
   width: 40px;
   height: 225px;
@@ -53,12 +54,14 @@
   right: 0;
 }
 
-.movieRow:hover .movieRow--left, .movieRow:hover .movieRow--right {
+.movieRow:hover .movieRow--left,
+.movieRow:hover .movieRow--right {
   opacity: 1;
 }
 
 @media (max-width: 768px) {
-  .movieRow--left, .movieRow--right {
+  .movieRow--left,
+  .movieRow--right {
     opacity: 1;
   }
 }
